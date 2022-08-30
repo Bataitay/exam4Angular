@@ -1,0 +1,64 @@
+<div class="container-lg">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-8">
+            <h2>Manager <b>Book</b></h2>
+          </div>
+          <div class="col-sm-8">
+            <h5>Quantity <b>{{books.length}}</b></h5>
+          </div>
+          <div class="col-sm-4">
+            <a routerLink="/add" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</a>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Stt</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td>{{ book.id }}</td>
+            <td> <a routerLink="/show/{{book.id}}">
+                {{ book.name }}
+              </a>
+            </td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>
+              <a routerLink="/edit/{{book.id}}" title="Edit" data-toggle="tooltip"><i
+                  class="material-icons">&#xE254;</i></a>
+              <a (click)="openDelete(book.id)" title="Delete"><i class="material-icons">&#xE872;</i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <a class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+      </div>
+      <div class="modal-body">
+        Are you sure?
+      </div>
+      <div class="modal-footer">
+        <a id="canel" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+        <button type="submit" (click)="delete()" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
